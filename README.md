@@ -33,15 +33,17 @@ For this project, React uses **useState** to manage the component state and re-r
 ai-listing-assistant/
 ├── backend/
 │   └── src
-│       └── main/
-│           └── kotlin/
-│               └── com/
-│                   └── bricfern/
-│                       ├── config/         # CORS, Gemini SDK setup
-│                       ├── controller/     # HTTP request handling
-│                       ├── service/        # Business logic
-│                       ├── dto/            # Request/response DTOs
-│                       └── exceptions/     # Custom exceptions
+│       ├── main/
+│       │   └── kotlin/
+│       │       └── com/
+│       │           └── bricfern/
+│       │               ├── config/         # CORS, Gemini SDK setup
+│       │               ├── controller/     # HTTP request handling
+│       │               ├── service/        # Business logic
+│       │               ├── dto/            # Request/response DTOs
+│       │               └── exceptions/     # Custom exceptions
+│       └── resources/
+│       │   └── mocks/
 └── src/
     ├── services/          # API client layer (HTTP calls to the backend)
     └── types/             # Custom types to match DTOs from backend
@@ -75,16 +77,46 @@ npm run dev
 GEMINI_API_KEY=your_api_key
 
 # Run the API
-# On Windows
-.\gradlew run
-
-# On Linux/macOS
-./gradlew run
+.\gradlew run # Windows
+./gradlew run # Linux/macOS
 ```
 
 ---
 
 ## Mock Mode
+
+By default, the backend runs in **mock mode** — it returns saved example
+responses instead of calling Gemini. This lets you clone the repo and see
+the app working immediately, with no API key required.
+
+### Switching to the real AI
+
+Set the following environment variable to `false` before running the backend:
+
+```bash
+$env:MOCK_MODE="false"    # Windows PowerShell
+export MOCK_MODE=false    # Linux/macOS
+```
+
+A valid API key is required when mock mode is disabled (see Prerequisites).
+
+### Simulating different AI behaviors
+
+While in mock mode, you can control which kind of example response is
+returned with the `MOCK_RESPONSE` variable:
+
+| Value | Behavior |
+|---|---|
+| `success` *(default)* | Returns a well-formed example response |
+| `invalid` | Returns a structurally valid response with unrealistic/edge-case data (empty tags, empty title, inverted price range) |
+| `malformed` | Returns a response with an invalid data type (triggers the app's error handling) |
+
+```bash
+$env:MOCK_RESPONSE="invalid"     # Windows PowerShell
+export MOCK_RESPONSE=invalid     # Linux/macOS
+```
+
+Example responses are stored in `backend/src/main/resources/mock/`.
 
 ---
 
