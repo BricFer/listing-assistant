@@ -12,7 +12,7 @@ export const AiListingService = async (description: string): Promise<AiListingRe
     })
 
     if (!response.ok) {
-        throw new Error("It was not possible to stablish a connection");
+        throw new Error('It was not possible to stablish a connection');
     }
 
     const data = await response.json();
