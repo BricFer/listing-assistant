@@ -42,9 +42,9 @@ ai-listing-assistant/
 │                       ├── service/        # Business logic
 │                       ├── dto/            # Request/response DTOs
 │                       └── exceptions/     # Custom exceptions
-├── src/
-│   ├── services/          # API client layer (HTTP calls to the backend)
-│   └── types/             # Custom types to match DTOs from backend
+└── src/
+    ├── services/          # API client layer (HTTP calls to the backend)
+    └── types/             # Custom types to match DTOs from backend
 ```
 
 ---
@@ -73,11 +73,12 @@ npm run dev
 ```bash
 # Set your Gemini API key as an environment variable:
 GEMINI_API_KEY=your_api_key
+
 # Run the API
-## On Windows
+# On Windows
 .\gradlew run
 
-## On Linux/macOS
+# On Linux/macOS
 ./gradlew run
 ```
 

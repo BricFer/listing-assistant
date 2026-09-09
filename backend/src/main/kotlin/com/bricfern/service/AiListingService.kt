@@ -1,21 +1,9 @@
-package com.bricfern.data
+package com.bricfern.service
 
 import com.bricfern.config.GeminiConfig
-import com.bricfern.dto.GenerateListingResponse
-import com.bricfern.exceptions.AiServiceException
-import com.bricfern.exceptions.AiTimeoutException
-import com.bricfern.exceptions.EmptyDescriptionException
-import com.bricfern.exceptions.InvalidAiResponseException
-import com.google.genai.kotlin.GenAiApiException
-import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withTimeout
-import kotlinx.serialization.SerializationException
-import kotlinx.serialization.json.Json
 
-/***
- * Class responsible for providing the description and making the call to the AI
- */
 class AiListingService {
     
     fun sendPrompt(description: String): String = runBlocking {
@@ -48,26 +36,6 @@ class AiListingService {
                 text = prompt
             )
             response.text ?: ""
-        }
-    }
-
-    fun generateListing(description: String): GenerateListingResponse {
-        if(description.isBlank()) {
-            throw EmptyDescriptionException(message = "Invalid argument. The description received is empty")
-        }
-        try {
-            val jsonString: String = sendPrompt(description)
-            val generatedListing = Json.decodeFromString<GenerateListingResponse>(jsonString)
-            return generatedListing
-        } catch (e: GenAiApiException) {
-            e.printStackTrace()
-            throw AiServiceException("There has been an error connecting with the AI service", e)
-        } catch (e: TimeoutCancellationException) {
-            e.printStackTrace()
-            throw AiTimeoutException("The AI service is taking too long. Please try again later.", e)
-        } catch (e: SerializationException) {
-            e.printStackTrace()
-            throw InvalidAiResponseException("The AI response has an invalid format", e)
         }
     }
 }

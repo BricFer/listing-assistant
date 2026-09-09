@@ -1,0 +1,19 @@
+[
+    {
+        "request": {
+            "description": "Bicicleta bmx, dos años de antigüedad"
+        },
+        "response": {
+            "title": "Bicicleta BMX en muy buen estado (2 años)",
+            "tags": [
+                "bmx",
+                "bicicleta",
+                "bici bmx",
+                "freestyle",
+                "ciclismo"
+            ],
+            "minPrice": "80.0€",
+            "maxPrice": "160.0€"
+        }
+    }
+]

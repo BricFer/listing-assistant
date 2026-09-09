@@ -1,0 +1,124 @@
+[
+    {
+        "request": {
+            "description": "Corta viento, un solo uso, de Zara"
+        },
+        "response": {
+            "title": "Chaqueta Cortavientos Zara - Como nueva",
+            "tags": [
+                "Zara",
+                "cortavientos",
+                "chaqueta",
+                "cazadora",
+                "moda"
+            ],
+            "minPrice": 12.0,
+            "maxPrice": 22.0
+        }
+    },
+    {
+        "request": {
+            "description": "Corta viento, un solo uso menos de un año de comprada, en el Zara"
+        },
+        "response": {
+            "title": "Chaqueta Cortavientos Zara - Como Nueva",
+            "tags": [
+                "cortavientos",
+                "zara",
+                "chaqueta",
+                "comonuevo"
+            ],
+            "minPrice": 15.0,
+            "maxPrice": 25.0
+        }
+    },
+    {
+        "request": {
+            "description": "Bicicleta de montaña, poco uso, freno delantero un poco duro"
+        },
+        "response": {
+            "title": "Bicicleta de Montaña MTB - Muy Poco Uso",
+            "tags": [
+                "bicicleta de montaña",
+                "mtb",
+                "bici",
+                "ciclismo"
+            ],
+            "minPrice": 65.0,
+            "maxPrice": 120.0
+        }
+    },
+    {
+        "request": {
+            "description": "Bicicleta bmx, dos años de antigüedad"
+        },
+        "response": {
+            "title": "Bicicleta BMX en muy buen estado (2 años)",
+            "tags": [
+                "bmx",
+                "bicicleta",
+                "bici bmx",
+                "freestyle",
+                "ciclismo"
+            ],
+            "minPrice": 80.0,
+            "maxPrice": 160.0
+        }
+    },
+    {
+        "request": {
+            "description": "Pantalon de pana estilo palazzo"
+        },
+        "response": {
+            "title": "Pantalón de pana estilo palazzo",
+            "tags": [
+                "pantalonpana",
+                "palazzo",
+                "modavintage",
+                "pantalonancho",
+                "tendencia"
+            ],
+            "minPrice": 12.0,
+            "maxPrice": 25.0
+        }
+    },
+    {
+        "request": {
+            "description": "Bici nueva"
+        },
+        "response": {
+            "title": "Bicicleta nueva a estrenar en perfecto estado",
+            "tags": [
+                "bicicleta",
+                "bici nueva",
+                "ciclismo",
+                "a estrenar",
+                "mountain bike"
+            ],
+            "minPrice": 120.0,
+            "maxPrice": 250.0
+        }
+    },
+    {
+        "request": {
+            "description": "iPhone 13"
+        },
+        "response": {
+            "title": "iPhone 13",
+            "tags": ["iphone", "apple", "smartphone"],
+            "minPrice": 250.0,
+            "maxPrice": 320.0
+        }
+    },
+    {
+        "request": {
+            "description": "Mountain bike"
+        },
+        "response": {
+            "title": "Mountain Bike",
+            "tags": ["bike", "mountain", "cycling"],
+            "minPrice": 300.0,
+            "maxPrice": 450.0
+        }
+    }
+]

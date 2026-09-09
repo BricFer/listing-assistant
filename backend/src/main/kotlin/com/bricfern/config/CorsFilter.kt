@@ -20,7 +20,7 @@ object CorsFilter : Filter() {
         headers.set("Access-Control-Allow-Headers", "Content-Type")
 
         if (exchange.requestMethod.equals("OPTIONS", ignoreCase = true)) {
-            exchange.sendResponseHeaders(204, 0)
+            exchange.sendResponseHeaders(204, -1)
             exchange.close()
             return
         }

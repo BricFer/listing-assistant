@@ -1,0 +1,56 @@
+[
+    {
+        "request": {
+            "description": "Corta viento, un solo uso, de Zara"
+        },
+        "response": {
+            "title": "Chaqueta Cortavientos Zara - Como nueva",
+            "tags": [],
+            "minPrice": 12.0,
+            "maxPrice": 22.0
+        }
+    },
+    {
+        "request": {
+            "description": "Corta viento, un solo uso menos de un año de comprada, en el Zara"
+        },
+        "response": {
+            "title": "",
+            "tags": [
+                "cortavientos",
+                "zara",
+                "chaqueta",
+                "comonuevo"
+            ],
+            "minPrice": 15.0,
+            "maxPrice": 25.0
+        }
+    },
+    {
+        "request": {
+            "description": "Bicicleta de montaña, poco uso, freno delantero un poco duro"
+        },
+        "response": {
+            "title": "Bicicleta de Montaña MTB - Muy Poco Uso",
+            "tags": [
+                "bicicleta de montaña",
+                "mtb",
+                "bici",
+                "ciclismo"
+            ],
+            "minPrice": 120.0,
+            "maxPrice": 65.0
+        }
+    },
+    {
+        "request": {
+            "description": "Pantalon de pana estilo palazzo"
+        },
+        "response": {
+            "title": "",
+            "tags": [],
+            "minPrice": 12.0,
+            "maxPrice": 25.0
+        }
+    }
+]
