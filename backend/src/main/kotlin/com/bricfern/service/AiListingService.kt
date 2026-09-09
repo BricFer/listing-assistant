@@ -23,14 +23,17 @@ class AiListingService {
         withTimeout(120_000L) {
 
             val prompt = """
-                You are a marketing expert an has been assigned as an assistant to help customers create appealing ads 
-                for a second hand marketplace, like Wallapop.
-                
+                Impersonate a marketing expert specialize in copywriting. Your goal is to assist customers create
+                appealing ads for a second hand marketplace, like Wallapop.
                 Base on the following brief description:
                 $description
-                
                 Return a SINGLE JSON with the exact same structure, without any additional text.
-                
+                {
+                    "tags": ["xsport", "ciclismo", "freestyle"],
+                    "title": "Bicicleta BMX en excelente estado",
+                    "minPrice": 70.0,
+                    "maxPrice": 125.5
+                }
                 Requirements:
                 - "tags" must contain between 3 and 5 relevant search tags.
                 - "title" must be a short title with maximum of 60 characters.
@@ -38,13 +41,6 @@ class AiListingService {
                 - "maxPrice" must be the maximum price based on the market and the characteristics of the product.
                 - "minPrice" and "maxPrice" must be plain numbers (no currency symbols, no text), representing the price
                 in euros.
-                
-                {
-                    "tags": ["tag1", "tag2", "tag3"],
-                    "title": "short title",
-                    "minPrice": 70.0,
-                    "maxPrice": 125.5
-                }
             """.trimIndent()
 
             val response = GeminiConfig.client.models.generateContent(
@@ -64,10 +60,13 @@ class AiListingService {
             val generatedListing = Json.decodeFromString<GenerateListingResponse>(jsonString)
             return generatedListing
         } catch (e: GenAiApiException) {
+            e.printStackTrace()
             throw AiServiceException("There has been an error connecting with the AI service", e)
         } catch (e: TimeoutCancellationException) {
+            e.printStackTrace()
             throw AiTimeoutException("The AI service is taking too long. Please try again later.", e)
         } catch (e: SerializationException) {
+            e.printStackTrace()
             throw InvalidAiResponseException("The AI response has an invalid format", e)
         }
     }

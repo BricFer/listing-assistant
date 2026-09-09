@@ -36,3 +36,5 @@ out/
 *.ipr
 
 *.class
+
+bin/
