@@ -3,14 +3,12 @@ package com.bricfern.service
 import com.bricfern.dto.MockListing
 import kotlinx.serialization.json.Json
 
-class MockListingService {
-    private val mockResponse =
-        System.getenv("MOCK_RESPONSE") ?: "success"
+class MockListingService(private val mockResponse: String) {
 
     fun loadMockExamples(fileName: String): List<MockListing> {
         val content = object {}.javaClass
             .getResourceAsStream("/$fileName")
-            ?.bufferedReader()
+            ?.bufferedReader(Charsets.UTF_8)
             ?.readText() ?: throw IllegalStateException("Mock file not found: $fileName")
 
         return Json.decodeFromString<List<MockListing>>(content)

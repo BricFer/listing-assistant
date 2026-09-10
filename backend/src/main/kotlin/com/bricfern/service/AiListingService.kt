@@ -13,7 +13,7 @@ class AiListingService {
             val prompt = """
                 Impersonate a marketing expert specialize in copywriting. Your goal is to assist customers create
                 appealing ads for a second hand marketplace, like Wallapop.
-                Base on the following brief description:
+                Based on the following brief description:
                 $description
                 Return a SINGLE JSON with the exact same structure, without any additional text.
                 {

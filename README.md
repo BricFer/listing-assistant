@@ -7,6 +7,8 @@ The AI agent takes a brief description provided by the user and sends back:
 - 3-5 search tags.
 - A suggested price range.
 
+The project took around 6 hours to be completed. However, this time is considering only development, testing and debugging as if we consider the time invested on reviewing documentation and understanding concepts the time increases a few more hours.
+
 ---
 
 ## Tech Stack
@@ -32,21 +34,33 @@ For this project, React uses **useState** to manage the component state and re-r
 ```
 ai-listing-assistant/
 ├── backend/
-│   └── src
+│   └── src/
 │       ├── main/
-│       │   └── kotlin/
-│       │       └── com/
-│       │           └── bricfern/
-│       │               ├── config/         # CORS, Gemini SDK setup
-│       │               ├── controller/     # HTTP request handling
-│       │               ├── service/        # Business logic
-│       │               ├── dto/            # Request/response DTOs
-│       │               └── exceptions/     # Custom exceptions
-│       └── resources/
-│       │   └── mocks/
-└── src/
-    ├── services/          # API client layer (HTTP calls to the backend)
-    └── types/             # Custom types to match DTOs from backend
+│       │   ├── kotlin/
+│       │   │   └── com/
+│       │   │       └── bricfern/
+│       │   │           ├── config/         # CORS, Gemini SDK setup
+│       │   │           ├── controller/     # HTTP request handling
+│       │   │           ├── service/        # Business logic
+│       │   │           ├── dto/            # Request/response DTOs
+│       │   │           └── exceptions/     # Custom exceptions
+│       │   └── resources/
+│       │       └── mock/                   # Mock example responses
+│       └── test/
+│           └── kotlin/
+│               └── com/
+│                   └── bricfern/
+│                       └── service/         # Unit tests
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   │   ├── services/                        # HTTP calls to the backend
+│   │   └── types/                           # Custom types to match DTOs from backend
+│   ├── .env.example
+│   ├── package.json
+│   └── vite.config.ts
+├── README.md
+└── AI_JOURNEY.md
 ```
 
 ---
@@ -61,6 +75,8 @@ ai-listing-assistant/
 
 ### Frontend setup
 ```bash
+cd frontend
+
 # Install dependencies
 npm install
 
@@ -73,8 +89,11 @@ npm run dev
 
 ### Backend setup
 ```bash
+cd backend
+
 # Set your Gemini API key as an environment variable:
-GEMINI_API_KEY=your_api_key
+$env:GEMINI_API_KEY="your_api_key"    # Windows PowerShell
+export GEMINI_API_KEY=your_api_key    # Linux/macOS
 
 # Run the API
 .\gradlew run # Windows
@@ -86,8 +105,7 @@ GEMINI_API_KEY=your_api_key
 ## Mock Mode
 
 By default, the backend runs in **mock mode** — it returns saved example
-responses instead of calling Gemini. This lets you clone the repo and see
-the app working immediately, with no API key required.
+responses instead of calling Gemini. This lets you clone the repo and see the app working immediately, with no API key required.
 
 ### Switching to the real AI
 
@@ -119,6 +137,28 @@ export MOCK_RESPONSE=invalid     # Linux/macOS
 Example responses are stored in `backend/src/main/resources/mock/`.
 
 ---
+
+## Tests
+
+Two tests are included, focused on error-handling logic rather than the
+happy path (which is already covered manually via Postman and the browser):
+
+- **Backend** (`MockListingServiceTest`): verifies that a mock file with an invalid data type fails deserialization as expected — this protects against silently broken mock data going unnoticed.
+- **Frontend** (`aiListingService.test.ts`): verifies that error responses from the backend are correctly propagated to the caller with the right message — this is the part of the error-handling chain most likely to break silently if the response format changes.
+
+### Running tests
+
+Backend:
+```bash
+cd backend
+.\gradlew test
+```
+
+Frontend:
+```bash
+cd frontend
+npm test
+```
 
 ## Author
 

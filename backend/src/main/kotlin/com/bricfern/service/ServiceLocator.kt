@@ -13,7 +13,7 @@ import kotlinx.serialization.json.Json
 class ServiceLocator {
     private val isMockMode = System.getenv("MOCK_MODE") != "false"
 
-    private val mockService = MockListingService()
+    private val mockService = MockListingService(System.getenv("MOCK_RESPONSE") ?: "success")
     private val aiService = AiListingService()
 
     fun generateListing(description: String): GenerateListingResponse {
@@ -33,7 +33,7 @@ class ServiceLocator {
             throw AiTimeoutException("The AI service is taking too long. Please try again later.", e)
         } catch (e: SerializationException) {
             e.printStackTrace()
-            throw InvalidAiResponseException("The AI response has an invalid format", e)
+            throw InvalidAiResponseException("Sorry! The AI response has an invalid format", e)
         }
     }
 }

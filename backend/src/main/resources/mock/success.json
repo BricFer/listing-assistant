@@ -1,7 +1,7 @@
 [
     {
         "request": {
-            "description": "Corta viento, un solo uso, de Zara"
+            "description": "Cortaviento, un solo uso, de Zara"
         },
         "response": {
             "title": "Chaqueta Cortavientos Zara - Como nueva",
@@ -14,6 +14,23 @@
             ],
             "minPrice": 12.0,
             "maxPrice": 22.0
+        }
+    },
+    {
+        "request": {
+            "description": "Bicicleta bmx, dos años de antigüedad"
+        },
+        "response": {
+            "title": "Bicicleta BMX Freestyle - Muy cuidada, poco uso",
+            "tags": [
+                "bmx",
+                "bicicleta",
+                "freestyle",
+                "ciclismo",
+                "skatepark"
+            ],
+            "minPrice": 85.0,
+            "maxPrice": 150.0
         }
     },
     {
@@ -105,7 +122,11 @@
         },
         "response": {
             "title": "iPhone 13",
-            "tags": ["iphone", "apple", "smartphone"],
+            "tags": [
+                "iphone",
+                "apple",
+                "smartphone"
+            ],
             "minPrice": 250.0,
             "maxPrice": 320.0
         }
@@ -116,7 +137,11 @@
         },
         "response": {
             "title": "Mountain Bike",
-            "tags": ["bike", "mountain", "cycling"],
+            "tags": [
+                "bike",
+                "mountain",
+                "cycling"
+            ],
             "minPrice": 300.0,
             "maxPrice": 450.0
         }

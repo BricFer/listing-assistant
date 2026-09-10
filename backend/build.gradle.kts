@@ -4,6 +4,10 @@ plugins {
     application
 }
 
+tasks.test {
+    useJUnitPlatform()
+}
+
 application {
     mainClass.set("com.bricfern.MainKt")
 }
@@ -20,4 +24,5 @@ dependencies {
     implementation("com.google.genai:google-genai-kotlin:1.0.0")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.1")
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
+    testImplementation(kotlin("test"))
 }

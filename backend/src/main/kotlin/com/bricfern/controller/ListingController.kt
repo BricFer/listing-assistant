@@ -27,7 +27,7 @@ class ListingController: HttpHandler {
     private fun generateListing(exchange: HttpExchange) {
         try {
             // Read the body from the request (POST Body)
-            val body = exchange.requestBody.bufferedReader().use { it.readText() }
+            val body = exchange.requestBody.bufferedReader(Charsets.UTF_8).use { it.readText() }
 
             // from JSON to GenerateListingRequest
             val request = Json.decodeFromString<GenerateListingRequest>(body)

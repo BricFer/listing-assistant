@@ -4,9 +4,6 @@ import com.google.genai.kotlin.Client
 import com.google.genai.kotlin.types.HttpOptions
 import com.google.genai.kotlin.types.HttpRetryOptions
 
-/***
- * Class responsible for the configuration/provide the client
- */
 object GeminiConfig {
     
     val client = Client(
